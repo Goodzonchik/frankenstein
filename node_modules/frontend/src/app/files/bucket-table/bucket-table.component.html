@@ -1,0 +1,17 @@
+<h3>Buckets</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>lastModified</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(bucket of buckets(); track bucket.name) {
+    <tr (click)="navigateToBacket(bucket.name)">
+      <td>{{ bucket.name }}</td>
+      <td>{{ bucket.creationDate | date }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
