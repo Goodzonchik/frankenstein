@@ -10,6 +10,9 @@ services:
     image: minio/minio:latest
     container_name: file-storage-db
     command: server --console-address ":9001" /data/
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
     expose:
       - "9000"
     ports:
@@ -19,6 +22,16 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.2
+
+  minio-init:
+    build: ./minio-init
+    container_name: minio-init
+    networks:
+      default:
+        ipv4_address: 172.18.0.10
+    depends_on:
+      minio:
+        condition: service_started
 
   neo4j:
     image: neo4j:5.23.0

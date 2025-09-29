@@ -77,9 +77,14 @@ npm run postgres-db
 ### Access Points
 - Frontend: http://localhost:4200
 - Reverse Proxy: http://localhost:8080
-- MinIO Console: http://localhost:9001
+- MinIO Console: http://localhost:9001 (minioadmin/minioadmin)
 - PostgreSQL Admin: http://localhost:8282
 - Neo4j Browser: http://localhost:7474
+
+### MinIO Buckets
+The following buckets are automatically created:
+- `files` - for file storage (public read access)
+- `frontend` - for static frontend files
 
 ## Architecture
 
