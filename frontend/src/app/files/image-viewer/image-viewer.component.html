@@ -1,0 +1,9 @@
+<div class="overlay" *ngIf="visible" (click)="onBackdropClick()">
+  <div class="content" (click)="$event.stopPropagation()">
+    <button class="close" (click)="onBackdropClick()">×</button>
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="preview" />
+  </div>
+  
+</div>
+
+

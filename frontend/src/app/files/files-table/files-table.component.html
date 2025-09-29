@@ -11,13 +11,13 @@
   </thead>
   <tbody>
     @for(file of files(); track file) {
-    <tr>
+    <tr (click)="openPreview(file.name)">
       <td>{{ file.name }}</td>
       <td>{{ file.lastModified | date }}</td>
       <td>{{ file.size }}</td>
       <td>
-        <button (click)="downloadFile(file.name)">download</button>
-        <button (click)="deleteFile(file.name)">delete</button>
+        <button (click)="$event.stopPropagation(); downloadFile(file.name)">download</button>
+        <button (click)="$event.stopPropagation(); deleteFile(file.name)">delete</button>
       </td>
     </tr>
     }
@@ -31,3 +31,9 @@
 
   <button (click)="uploadFileToActivity()">uploadFileToActivity</button>
 </div>
+
+<app-image-viewer
+  [imageUrl]="previewImageUrl()"
+  [visible]="isViewerVisible()"
+  (closed)="closePreview()"
+></app-image-viewer>

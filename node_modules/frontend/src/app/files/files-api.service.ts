@@ -47,4 +47,10 @@ export class FilesApiService {
   deleteFile$(bucket: string, filename: string): Observable<any> {
     return this.httpClient.delete(`${this.baseUrl}/${bucket}/file/${filename}`);
   }
+
+  getFileBlob$(bucket: string, name: string): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}/${bucket}/file/${name}`, {
+      responseType: 'blob',
+    });
+  }
 }
