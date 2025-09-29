@@ -56,8 +56,9 @@ services:
     container_name: file-storage-service
     volumes:
       - ./file-storage-service/:/app
-    working_dir: /app/dist
-    command: node main.js
+      - ./node_modules:/app/node_modules
+    working_dir: /app
+    command: node dist/main.js
     expose:
       - "3001"
     networks:
@@ -72,8 +73,9 @@ services:
     container_name: graph-db-service
     volumes:
       - ./graph-db-service/:/app
-    working_dir: /app/dist
-    command: node main.js
+      - ./node_modules:/app/node_modules
+    working_dir: /app
+    command: node dist/main.js
     expose:
       - "3000"
     networks:
@@ -122,8 +124,9 @@ services:
     container_name: postgres-db-service
     volumes:
       - ./postgres-db-service/:/app
-    working_dir: /app/dist
-    command: node main.js
+      - ./node_modules:/app/node_modules
+    working_dir: /app
+    command: node dist/main.js
     expose:
       - "3000"
     networks:
